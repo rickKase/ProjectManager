@@ -1,9 +1,11 @@
 package com.kaselabs.projman.test;
 
-import javax.swing.*;
+import com.kaselabs.projman.Model.DataFolder;
+import com.kaselabs.projman.Model.ProjectDao;
+import org.xml.sax.SAXException;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by Rick on 6/10/2017.
@@ -12,12 +14,17 @@ public class Test {
 
 	public static void main(String[] args) {
 
-		File file = new File(".\\data");
+		DataFolder dataFolder = new DataFolder();
+		File file = dataFolder.getProjectFiles()[0];
+
 		try {
-			System.out.println(file.getCanonicalPath());
+			System.out.println(new ProjectDao().getDocument(file).getDocumentElement().getNodeName());
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
 		}
+
 	}
 
 }

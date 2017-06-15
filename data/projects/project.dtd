@@ -1,6 +1,6 @@
 <!ELEMENT project (title, summary, todoList)>
 <!ELEMENT title (#PCDATA)>
-<!ELEMENT summary (#PCDATA|br)>
+<!ELEMENT summary (#PCDATA|br)*>
 <!ELEMENT br EMPTY>
 <!ELEMENT todoList (title, todoList*, todoItem*)>
 <!ELEMENT todoItem (title, completed)>

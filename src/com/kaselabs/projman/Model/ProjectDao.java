@@ -1,32 +1,37 @@
 package com.kaselabs.projman.Model;
 
-import com.kaselabs.projman.Model.entities.Project;
+import org.w3c.dom.*;
+import org.xml.sax.*;
+import javax.xml.parsers.*;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Rick on 6/12/2017.
  */
 public class ProjectDao {
 
-	public static final String BASE_DIRECTORY = ".";
-	public static final String DATA_DIRECTORY = "." + File.separator + "data";
-	public static final String PROJECT_DATA_DIRECTORY =
-			"." + File.separator + "data" + File.separator + "projects";
+	private DataFolder dataFolder;
 
-	/**
-	 * input is an xml file and output is the object that the
-	 * file represents.
-	 * @param file
-	 * @return
-	 */
-	public Project getProject(File file) {
-		return null;
+	public ProjectDao() {
+		dataFolder = new DataFolder();
 	}
 
-	public Project getPrject(String fileName) {
-		getProject(new File(PROJECT_DATA_DIRECTORY, fileName));
+	public Document getDocument(File file) throws IOException, SAXException {
+		try {
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder;
+
+			factory.setIgnoringComments(true);
+			factory.setIgnoringElementContentWhitespace(true);
+			factory.setValidating(true);
+
+			builder = factory.newDocumentBuilder();
+			return builder.parse(file);
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
-
 }
