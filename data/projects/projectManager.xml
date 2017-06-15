@@ -2,18 +2,22 @@
 <!DOCTYPE project SYSTEM "project.dtd">
 <project>
 	<title>Digital Project Manager</title>
+	<!--
+		summary text will contain mixed markup in future update in
+		order to preserve formatting.
+	-->
 	<summary>
 		This is a digital project manager. currently only focusing
 		on creation of a minimum viable product. The project will
 		undergo heavy changes throughout development but a semi
-		working product must be finished ASAP.<br/>
+		working product must be finished ASAP.
 		current features will be ability to create new projects with
 		a name, summary, and a single to do list. That to do list can
-		have checkbox items and sublists within it.<br/>
+		have checkbox items and sublists within it.
 		All project data will be stored within xml files, one project
 		per file. Dao Files will allow functionality to load data and
 		save data to and from those files. Managers create and return
-		projects objects.<br/>
+		projects objects.
 	</summary>
 	<todoList>
 		<title>To Do List</title>
