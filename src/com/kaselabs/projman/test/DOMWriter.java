@@ -1,5 +1,6 @@
 package com.kaselabs.projman.test;
 
+import org.w3c.dom.DocumentType;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
@@ -29,6 +30,15 @@ public class DOMWriter {
 			case Node.DOCUMENT_NODE:
 				System.out.print("DOC:");
 				printlnCommon(node);
+				break;
+			case Node.DOCUMENT_TYPE_NODE:
+				System.out.print("DOC_TYPE:");
+				printlnCommon(node);
+				NamedNodeMap nodeMap = ((DocumentType)node).getEntities();
+				indent +=2 ;
+				for (int i = 0; i < nodeMap.getLength(); i++)
+					printNodeContent(nodeMap.item(i));
+				indent -= 2;
 				break;
 			case Node.ELEMENT_NODE:
 				System.out.print("ELEM:");
