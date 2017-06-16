@@ -21,6 +21,10 @@
 	</summary>
 	<todoList>
 		<title>To Do List</title>
+		<todoItem>
+			<title>Create test data</title>
+			<completed>true</completed>
+		</todoItem>
 		<todoList>
 			<title>Make Entities</title>
             <todoItem>
