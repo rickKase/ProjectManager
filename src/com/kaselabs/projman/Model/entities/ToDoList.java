@@ -50,8 +50,6 @@ public class ToDoList implements ToDoListItem {
 	public void addItem(int index, ToDoListItem item) {
 		if (listOfItems.contains(item))
 			throw new IllegalArgumentException("cannot add duplicate item");
-		if (index > listOfItems.size())
-			throw new IllegalArgumentException("cannot add duplicate item");
 		listOfItems.add(index, item);
 	}
 
@@ -65,5 +63,9 @@ public class ToDoList implements ToDoListItem {
 
 	public ToDoListItem getItem(int index) {
 		return listOfItems.get(index);
+	}
+
+	public int getItemCount() {
+		return listOfItems.size();
 	}
 }

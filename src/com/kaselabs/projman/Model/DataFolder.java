@@ -11,8 +11,9 @@ import java.io.IOException;
  * Created by Rick on 6/13/2017.
  */
 public class DataFolder {
-	
+
 	public static final String BASE_DIRECTORY = ".";
+	private static String projectDTD = "project.dtd";
 
 	private File dataFile;
 	private File projectFolder;
@@ -30,8 +31,8 @@ public class DataFolder {
 		return projectFolder.listFiles(new xmlFileFilter());
 	}
 
-	public File getXMLSchemaDTD() {
-		return new File(projectFolder, "project.dtd");
+	public File getProjectSchemaDTD() {
+		return new File(projectFolder, projectDTD);
 	}
 
 	public int getDataFilesCount() {
@@ -45,15 +46,17 @@ public class DataFolder {
 		file.delete();
 	}
 
-	public void createProjectFile(String fileName) {
+	public File createProjectFile(String fileName) {
 		File file = new File(projectFolder, fileName);
 		if (file.exists())
 			throw new IllegalArgumentException("File already exist");
 		try {
 			file.createNewFile();
+			return file;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 
