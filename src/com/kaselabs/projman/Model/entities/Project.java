@@ -7,7 +7,7 @@ public class Project {
 
 	//private ArrayList<Idea> influences; // add when more relevant
 	private String title;
-	private String Summary;
+	private String summary;
 	private ToDoList list;
 
 	public Project(String title) {
@@ -23,11 +23,11 @@ public class Project {
 	}
 
 	public String getSummary() {
-		return Summary;
+		return summary;
 	}
 
 	public void setSummary(String summary) {
-		Summary = summary;
+		this.summary = summary;
 	}
 
 	public ToDoList getList() {
