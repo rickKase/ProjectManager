@@ -5,13 +5,14 @@ package com.kaselabs.projman.Model.entities;
  */
 public class Project {
 
-	//private ArrayList<Idea> influences; // add when more relevant
+	// private ArrayList<Idea> influences;
 	private String title;
 	private String summary;
 	private ToDoList list;
 
 	public Project(String title) {
 		this.title = title;
+		list = new ToDoList("To Do:");
 	}
 
 	public String getTitle() {
@@ -30,12 +31,35 @@ public class Project {
 		this.summary = summary;
 	}
 
-	public ToDoList getList() {
-		return list;
+	public void addItem(ToDoItem item) {
+		list.addItem(item);
 	}
 
-	public void setList(ToDoList list) {
-		this.list = list;
+	public void removeItem(ToDoItem item) {
+		list.removeItem(item);
 	}
 
+	public void removeItem(int item) {
+		list.removeItem(item);
+	}
+
+	public ToDoItem getItem(int index) {
+		return list.getItem(index);
+	}
+
+	public ToDoItem[] getItems() {
+		return list.getItems();
+	}
+
+	public ToDoTask[] getTasks() {
+		return list.getTasks();
+	}
+
+	public int getItemCount() {
+		return list.getItemCount();
+	}
+
+	public int getTaskCount() {
+		return list.getTaskCount();
+	}
 }
