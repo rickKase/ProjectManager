@@ -12,14 +12,15 @@ public class DataFolder {
 	private static final File DATA_DIRECTORY = new File(BASE_DIRECTORY, File.separator + "data");
 	private static final File SCHEMA_DIRECTORY = new File(DATA_DIRECTORY, "schema");
 
-	private static final File PROJECT_DTD = new File(SCHEMA_DIRECTORY, "project.dtd");
+	public static final File PROJECT_DTD = new File(SCHEMA_DIRECTORY, "project.dtd");
 	public static final File PROJECTS_DIRECTORY = new File(DATA_DIRECTORY, "projects");
 
+	public static final String EXTENSION = ".xml";
 	private static final DataFolder instance = new DataFolder();
 
 	private DataFolder() {}
 
-	public DataFolder getInstance() {
+	public static DataFolder getInstance() {
 		return instance;
 	}
 
