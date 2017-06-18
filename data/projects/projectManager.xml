@@ -20,7 +20,7 @@
 		projects objects.
 	</summary>
 	<todoList>
-		<title>To Do List</title>
+		<title>To Do:</title>
 		<todoItem>
 			<title>Create test data</title>
 			<completed>true</completed>
