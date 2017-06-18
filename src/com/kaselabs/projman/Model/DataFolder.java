@@ -1,70 +1,49 @@
 package com.kaselabs.projman.Model;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 
 /**
- * Represents the data folder and provides methods to easily obtain
- * reference to all data stored in the application.
- *
  * Created by Rick on 6/13/2017.
  */
 public class DataFolder {
 
-	public static final String BASE_DIRECTORY = ".";
-	private static String projectDTD = "project.dtd";
+	private static final File BASE_DIRECTORY = new File(".");
+	private static final File DATA_DIRECTORY = new File(BASE_DIRECTORY, File.separator + "data");
+	private static final File SCHEMA_DIRECTORY = new File(DATA_DIRECTORY, "schema");
 
-	private File dataFile;
-	private File projectFolder;
+	private static final File PROJECT_DTD = new File(SCHEMA_DIRECTORY, "project.dtd");
+	public static final File PROJECTS_DIRECTORY = new File(DATA_DIRECTORY, "projects");
 
-	public DataFolder() {
-		dataFile = new File(BASE_DIRECTORY, "data");
-		projectFolder = new File(dataFile, "projects");
+	private static final DataFolder instance = new DataFolder();
+
+	private DataFolder() {}
+
+	public DataFolder getInstance() {
+		return instance;
 	}
 
-	public File getProjectFolder() {
-		return projectFolder;
-	}
-
-	public File[] getProjectFiles() {
-		return projectFolder.listFiles(new xmlFileFilter());
-	}
-
-	public File getProjectSchemaDTD() {
-		return new File(projectFolder, projectDTD);
-	}
-
-	public int getDataFilesCount() {
-		return projectFolder.list().length - 1;
-	}
-
-	public void deleteProjectFile(String fileName) {
-		File file = new File(projectFolder, fileName);
-		if (!file.exists())
-			throw new IllegalArgumentException("File does not exist");
-		file.delete();
-	}
-
-	public File createProjectFile(String fileName) {
-		File file = new File(projectFolder, fileName);
-		if (file.exists())
-			throw new IllegalArgumentException("File already exist");
+	public void createFile(File folder, String fileName) {
 		try {
-			file.createNewFile();
-			return file;
+			new File(folder, fileName).createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
 	}
 
+	public void deleteFile(File folder, String fileName) {
+		new File(folder, fileName).delete();
+	}
 
-	private class xmlFileFilter implements FileFilter {
+	public boolean hasFile(File folder, String fileName) {
+		return new File(folder, fileName).exists();
+	}
 
-		@Override
-		public boolean accept(File file) {
-			return file.getName().endsWith("xml");
-		}
+	public File[] getFiles(File folder) {
+		return folder.listFiles();
+	}
+
+	public int getFileCount(File folder) {
+		return folder.list().length;
 	}
 }
