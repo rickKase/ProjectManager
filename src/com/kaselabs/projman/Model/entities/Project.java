@@ -1,6 +1,12 @@
 package com.kaselabs.projman.Model.entities;
 
+import java.util.Collection;
+
 /**
+ * Represents a potential idea for a project.
+ * Has a title and summary of the  project, as well as
+ * a To do List that tracks the progress being made
+ * towards completing the project.
  * Created by Rick on 6/10/2017.
  */
 public class Project {
@@ -10,11 +16,17 @@ public class Project {
 	private String summary;
 	private ToDoList list;
 
+	//// Constructor ////
+
 	public Project(String title) {
 		this.title = title;
 		list = new ToDoList("To Do:");
 	}
 
+
+	///////////////////////////////////////////////////////////////////
+	///// These Methods are Getters and Setters ///////////////////
+	///////////////////////////////////////////////////////////
 	public String getTitle() {
 		return title;
 	}
@@ -30,11 +42,33 @@ public class Project {
 	public void setSummary(String summary) {
 		this.summary = summary;
 	}
+	///////////////////////////////////////////////////////////////////
 
+
+	///////////////////////////////////////////////////////////////////
+	///// These Methods add Items /////////////////////////////////
+	///////////////////////////////////////////////////////////
 	public void addItem(ToDoItem item) {
 		list.addItem(item);
 	}
 
+	public void addItem(int index, ToDoItem item) {
+		list.addItem(index, item);
+	}
+
+	public void addItems(Collection<ToDoItem> items) {
+		list.addItems(items);
+	}
+
+	public void addItems(int index, Collection<ToDoItem> items) {
+		list.addItems(index, items);
+	}
+	///////////////////////////////////////////////////////////////////
+
+
+	///////////////////////////////////////////////////////////////////
+	///// These Methods remove Items //////////////////////////////
+	///////////////////////////////////////////////////////////
 	public void removeItem(ToDoItem item) {
 		list.removeItem(item);
 	}
@@ -42,7 +76,12 @@ public class Project {
 	public void removeItem(int item) {
 		list.removeItem(item);
 	}
+	///////////////////////////////////////////////////////////////////
 
+
+	///////////////////////////////////////////////////////////////////
+	///// These Methods give content information //////////////////
+	///////////////////////////////////////////////////////////
 	public ToDoItem getItem(int index) {
 		return list.getItem(index);
 	}
@@ -62,4 +101,5 @@ public class Project {
 	public int getTaskCount() {
 		return list.getTaskCount();
 	}
+	///////////////////////////////////////////////////////////////////
 }
