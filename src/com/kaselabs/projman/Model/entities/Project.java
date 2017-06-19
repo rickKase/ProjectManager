@@ -82,24 +82,12 @@ public class Project {
 	///////////////////////////////////////////////////////////////////
 	///// These Methods give content information //////////////////
 	///////////////////////////////////////////////////////////
-	public ToDoItem getItem(int index) {
-		return list.getItem(index);
+	public ToDoList getToDoList() {
+		return list;
 	}
 
-	public ToDoItem[] getItems() {
-		return list.getItems();
-	}
-
-	public ToDoTask[] getTasks() {
-		return list.getTasks();
-	}
-
-	public int getItemCount() {
-		return list.getItemCount();
-	}
-
-	public int getTaskCount() {
-		return list.getTaskCount();
+	public void setToDoList(ToDoList list) {
+		this.list = list;
 	}
 	///////////////////////////////////////////////////////////////////
 }
