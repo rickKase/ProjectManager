@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE project SYSTEM "project.dtd">
+<!DOCTYPE project SYSTEM "..\schema\project.dtd">
 <project>
 	<title>Digital Project Manager</title>
-	<!--
-		summary text will contain mixed markup in future update in
-		order to preserve formatting.
-	-->
 	<summary>
 		This is a digital project manager. currently only focusing
 		on creation of a minimum viable product. The project will
@@ -20,21 +16,21 @@
 		projects objects.
 	</summary>
 	<todoList>
-		<title>To Do List</title>
-		<todoItem>
+		<title>To Do:</title>
+		<todoTask>
 			<title>Create test data</title>
 			<completed>true</completed>
-		</todoItem>
+		</todoTask>
 		<todoList>
 			<title>Make Entities</title>
-            <todoItem>
+            <todoTask>
                 <title>Make project implementation</title>
                 <completed>true</completed>
-            </todoItem>
-            <todoItem>
+            </todoTask>
+            <todoTask>
                 <title>make to-do list implementation</title>
                 <completed>true</completed>
-            </todoItem>
+            </todoTask>
 		</todoList>
 	</todoList>
 </project>

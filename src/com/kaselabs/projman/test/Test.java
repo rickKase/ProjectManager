@@ -1,10 +1,8 @@
 package com.kaselabs.projman.test;
 
-import com.kaselabs.projman.Model.EntityManager;
-import com.kaselabs.projman.Model.ProjectDao;
+import com.kaselabs.projman.Model.Dao;
+import com.kaselabs.projman.Model.EntityParser;
 import com.kaselabs.projman.Model.entities.Project;
-import com.kaselabs.projman.Model.entities.ToDoItem;
-import com.kaselabs.projman.Model.entities.ToDoList;
 import org.w3c.dom.Document;
 
 
@@ -14,14 +12,13 @@ import org.w3c.dom.Document;
 public class Test {
 
 	public static void main(String[] args) {
-		EntityManager man = EntityManager.getInstance();
-		DOMWriter writer = new DOMWriter(4);
+		EntityParser parser = EntityParser.getInstance();
 
-		Project proj = man.getSavedProjects()[0];
+		Project proj = parser.loadProjects()[0];
 
-		proj.setTitle("Testing2");
-		proj.getList().addItem(man.createToDoItem("add list item through my program", true));
-		man.saveProject(proj);
+		System.out.println(proj.getSummary());
+
+		parser.saveProject(proj);
 	}
 
 }
