@@ -26,7 +26,7 @@ import java.io.IOException;
  * parsing them into DOM objects for internal use and back again.
  * Created by Rick on 6/12/2017.
  */
-public class ProjectDao {
+public class Dao {
 
 	private DataFolder dataFolder;
 
@@ -37,7 +37,7 @@ public class ProjectDao {
 	private TransformerFactory tFactory;
 	private Transformer transformer;
 
-	public ProjectDao() {
+	public Dao() {
 		dataFolder = DataFolder.getInstance();
 
 		dFactory = DocumentBuilderFactory.newInstance();
