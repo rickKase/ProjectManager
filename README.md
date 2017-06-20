@@ -4,9 +4,8 @@ A program to help organize and manage future projects as well as progress toward
 ## Things to do
 - handle possible conflict that may arise when two projects of the same name are attempted to be saved
   - either eliminate possibility two projects with the same name or establish a more coherent naming convention
-  - Handle issue with DTD declaration being pathed from the wrong starting location
 - Create GUI to interact with the data model
-  - should utilize a list of Projects to store all the relavant information
+  - should utilize a list of Projects to store all the relevant information
   - should allow you to create and delete entire projects
   - should have side pane to view all projects and main text field for viewing content of a single project
   - display Title of project at the top in large text
