@@ -20,6 +20,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Path;
 
 /**
  * Provides functionality for reading files into memory and then
@@ -160,12 +161,13 @@ public class Dao {
 	}
 
 	/**
-	 * Shorthand method for setting telling the transformer which dtd file
-	 * is to be used to write the document.
+	 * Shorthand method for  telling the transformer which dtd file
+	 * to used when validating the document.
 	 * @param file
 	 */
 	private void setTransformerSchema(File file) {
-		transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, file.getPath());
+		Path relative = DataFolder.PROJECTS_DIRECTORY.toPath().relativize(file.toPath());
+		transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, relative.toString());
 	}
 
 	/**

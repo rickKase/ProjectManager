@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE project SYSTEM "..\schema\project.dtd">
 <project>
-	<title>Digital Project Manager</title>
-	<summary>
+    <title>Digital Project Manager</title>
+    <summary>
 		This is a digital project manager. currently only focusing
 		on creation of a minimum viable product. The project will
 		undergo heavy changes throughout development but a semi
@@ -15,14 +15,14 @@
 		save data to and from those files. Managers create and return
 		projects objects.
 	</summary>
-	<todoList>
-		<title>To Do:</title>
-		<todoTask>
-			<title>Create test data</title>
-			<completed>true</completed>
-		</todoTask>
-		<todoList>
-			<title>Make Entities</title>
+    <todoList>
+        <title>To Do:</title>
+        <todoTask>
+            <title>Create test data</title>
+            <completed>true</completed>
+        </todoTask>
+        <todoList>
+            <title>Make Entities</title>
             <todoTask>
                 <title>Make project implementation</title>
                 <completed>true</completed>
@@ -31,6 +31,6 @@
                 <title>make to-do list implementation</title>
                 <completed>true</completed>
             </todoTask>
-		</todoList>
-	</todoList>
+        </todoList>
+    </todoList>
 </project>
