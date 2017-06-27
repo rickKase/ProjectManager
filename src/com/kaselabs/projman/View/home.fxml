@@ -11,17 +11,30 @@
 			fx:controller="com.kaselabs.projman.View.Controller" >
 	<left>
 		<VBox>
-			<ListView VBox.vgrow="ALWAYS">
+			<ListView fx:id="projectView" VBox.vgrow="ALWAYS" prefHeight="0" minHeight="0"
+					onMouseReleased="#chooseProject">
 
 			</ListView>
-			<Button text="New Project" alignment="BOTTOM_CENTER"/>
+			<HBox>
+				<TextField fx:id="projectNameField" HBox.hgrow="ALWAYS" />
+				<Button onAction="#deleteProject" text="delete" />
+				<Button fx:id="addProjectButton" onAction="#addProject"
+						text="New" />
+			</HBox>
 		</VBox>
 	</left>
 	<right>
-
+		<VBox>
+			<Label text="       Summary       ">
+				<font>
+					<Font name="Times New Roman Bold" size="28"/>
+				</font>
+			</Label>
+			<Label fx:id="summaryLabel" />
+		</VBox>
 	</right>
 	<center>
-		<GridPane minHeight="400.0" minWidth="600.0">
+		<GridPane>
 		</GridPane>
 	</center>
 </BorderPane>
