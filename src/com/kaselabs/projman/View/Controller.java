@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
  */
 public class Controller {
 
-	@FXML private EntityManager entityMan = new EntityManager();
+	@FXML private ListView<Project> projectView;
 	@FXML private TextField projectNameField;
 	@FXML private Label summaryLabel;
 
