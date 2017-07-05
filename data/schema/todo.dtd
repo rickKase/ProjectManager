@@ -1,0 +1,3 @@
+<!ELEMENT todo (title, status, todo*)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT status (#PCDATA)>
