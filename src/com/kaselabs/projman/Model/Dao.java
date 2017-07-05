@@ -70,10 +70,17 @@ public class Dao {
 		}
 	}
 
+
+
 	/*
 	* To Do Data methods
 	*/
 
+	/**
+	 * reads all the currently saved ToDoTask files saved on hard
+	 * disk into memory and returns them as an array.
+	 * @return array of saved ToDoTasks
+	 */
 	public ToDoTask[] readToDos() {
 		List<ToDoTask> todos = new ArrayList<>();
 		for (File file : dataFolder.getFiles(DataFolder.TODO_DIRECTORY))
@@ -81,24 +88,49 @@ public class Dao {
 		return todos.toArray(new ToDoTask[0]);
 	}
 
+	/**
+	 * Reads the single ToDoTask with the given title into memory
+	 * @param title of ToDoTask
+	 * @return ToDoTask with the given title
+	 */
 	public ToDoTask readToDo(String title) {
 		return todoParser.createToDo(readDocument(
 				dataFolder.getFile(DataFolder.TODO_DIRECTORY, title)));
 	}
 
-	public void writeToDo(ToDoTask toDoTask, String title) {
+	/**
+	 * Writes the given ToDoTask into a file stored in persistent
+	 * memory.
+	 * @param toDoTask to be saved
+	 */
+	public void writeToDo(ToDoTask toDoTask) {
 		setTransformerSchema(DataFolder.TODO_DTD);
 		writeDocument(todoParser.createDocument(toDoTask),
-				dataFolder.getFile(DataFolder.TODO_DIRECTORY, title));
+				dataFolder.getFile(DataFolder.TODO_DIRECTORY, toDoTask.getTitle()));
 	}
 
+	/**
+	 * Returns a boolean value representing whether or not a ToDoTask
+	 * with the provided title is saved or not.
+	 * @param title of the ToDoTask being searched for
+	 * @return boolean value representing whether or not a ToDoTask with
+	 * the given title is saved.
+	 */
 	public boolean toDoExists(String title) {
 		return dataFolder.hasFile(DataFolder.TODO_DIRECTORY, title);
 	}
 
+	/**
+	 * Returns the number of ToDoTasks that are saved and managed
+	 * by the program.
+	 * @return the number of ToDoTask files currently saved in
+	 * persistent memory
+	 */
 	public int toDoSaveCount() {
 		return dataFolder.getFileCount(DataFolder.TODO_DIRECTORY);
 	}
+
+
 
 	/*
 	* Internal methods for performing basic, nonspecific versions

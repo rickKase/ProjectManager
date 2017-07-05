@@ -29,7 +29,7 @@ public class Test {
 
 		toDoTask.printFullToDo();
 
-		dao.writeToDo(toDoTask, "Example");
+		dao.writeToDo(toDoTask);
 
 //		ToDoTask todo1 = new ToDoTask();
 //		ToDoTask todo2 = new ToDoTask();
