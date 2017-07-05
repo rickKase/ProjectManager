@@ -11,30 +11,19 @@
 			fx:controller="com.kaselabs.projman.View.Controller" >
 	<left>
 		<VBox>
-			<ListView fx:id="projectView" VBox.vgrow="ALWAYS" prefHeight="0" minHeight="0"
-					onMouseReleased="#chooseProject">
+			<ListView fx:id="toDoView" VBox.vgrow="ALWAYS" prefHeight="0" minHeight="0"
+					onMouseReleased="#chooseToDo">
 
 			</ListView>
 			<HBox>
 				<TextField fx:id="projectNameField" HBox.hgrow="ALWAYS" />
-				<Button onAction="#deleteProject" text="delete" />
-				<Button fx:id="addProjectButton" onAction="#addProject"
+				<Button onAction="#deleteToDo" text="delete" />
+				<Button fx:id="addProjectButton" onAction="#createToDo"
 						text="New" />
 			</HBox>
 		</VBox>
 	</left>
-	<right>
-		<VBox>
-			<Label text="       Summary       ">
-				<font>
-					<Font name="Times New Roman Bold" size="28"/>
-				</font>
-			</Label>
-			<Label fx:id="summaryLabel" />
-		</VBox>
-	</right>
 	<center>
-		<GridPane>
-		</GridPane>
+		<TreeView fx:id="todoView" />
 	</center>
 </BorderPane>

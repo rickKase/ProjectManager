@@ -1,44 +1,32 @@
 package com.kaselabs.projman.View;
 
-import com.kaselabs.projman.Model.EntityManager;
-import com.kaselabs.projman.Model.entities.Project;
+import com.kaselabs.projman.Model.entities.ToDoTask;
+import com.kaselabs.projman.Model.entities.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 /**
  * Created by Rick on 6/19/2017.
  */
 public class Controller {
 
-	@FXML private ListView<Project> projectView;
-	@FXML private TextField projectNameField;
-	@FXML private Label summaryLabel;
+	private User user;
+	@FXML private ListView<ToDoTask> toDoView;
 
 	public void initialize() {
-		Project proj = new Project("Test Project");
-		proj.setSummary("This is a summary of the test project.");
-		projectView.getItems().add(proj);
-		summaryLabel.setText("");
+		user = new User();
+		toDoView.getItems().addAll(user.getToDoTaskList());
 	}
 
-	@FXML
-	public void addProject() {
-		projectView.getItems().add(new Project(projectNameField.getText()));
+
+	public void chooseToDo(MouseEvent mouseEvent) {
 	}
 
-	@FXML
-	public void deleteProject() {
-		Project proj = projectView.getSelectionModel().getSelectedItem();
-		if (proj == null)
-			return;
-		projectView.getItems().remove(proj);
+	public void deleteToDo(ActionEvent actionEvent) {
 	}
 
-	@FXML
-	public void chooseProject() {
-		Project proj = projectView.getSelectionModel().getSelectedItem();
-		summaryLabel.setText(proj.getSummary());
+	public void createToDo(ActionEvent actionEvent) {
 	}
 }

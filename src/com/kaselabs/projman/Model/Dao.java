@@ -1,7 +1,7 @@
 package com.kaselabs.projman.Model;
 
+import com.kaselabs.projman.Model.entities.ToDoTask;
 import org.w3c.dom.Document;
-
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -9,23 +9,18 @@ import org.xml.sax.SAXParseException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Provides functionality for reading files into memory and then
- * parsing them into DOM objects for internal use and back again.
- * Created by Rick on 6/12/2017.
+ * Created by Rick on 7/3/2017.
  */
 public class Dao {
 
@@ -34,9 +29,11 @@ public class Dao {
 	/* Stores a reference to factories, builders, and transformer */
 	private DocumentBuilderFactory dFactory;
 	private DocumentBuilder builder;
-
 	private TransformerFactory tFactory;
 	private Transformer transformer;
+
+	/* Parsers that do the heavy lifting */
+	private ToDoParser todoParser;
 
 	public Dao() {
 		dataFolder = DataFolder.getInstance();
@@ -45,6 +42,7 @@ public class Dao {
 		tFactory = TransformerFactory.newInstance();
 
 		initializeConfiguration();
+		todoParser = new ToDoParser(builder);
 	}
 
 	/**
@@ -64,7 +62,7 @@ public class Dao {
 			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 			transformer.setOutputProperty(OutputKeys.METHOD, "xml");
 			builder = dFactory.newDocumentBuilder();
-			builder.setErrorHandler(new ParserErrorHandler());
+			builder.setErrorHandler(new Dao.ParserErrorHandler());
 		} catch (TransformerConfigurationException e) {
 			e.printStackTrace();
 		} catch (ParserConfigurationException e) {
@@ -72,54 +70,40 @@ public class Dao {
 		}
 	}
 
-	/**
-	 * Reads a single project, determined by that Projects title, into
-	 * memory in the form of DOM object. Throws an error if the file
-	 * does not exist.
-	 * @param title
-	 * @return a Document object representing the xml in the save file
-	 */
-	public Document readProject(String title) {
-		return readDocument(new File(DataFolder.PROJECTS_DIRECTORY, title + DataFolder.EXTENSION));
+	/*
+	* To Do Data methods
+	*/
+
+	public ToDoTask[] readToDos() {
+		List<ToDoTask> todos = new ArrayList<>();
+		for (File file : dataFolder.getFiles(DataFolder.TODO_DIRECTORY))
+			todos.add(todoParser.createToDo(readDocument(file)));
+		return todos.toArray(new ToDoTask[0]);
 	}
 
-	/**
-	 * Reads all files in the projects folder and returns them in the form
-	 * of a Document array.
-	 * @return
-	 */
-	public Document[] readProjects() {
-		File[] files = dataFolder.getFiles(DataFolder.PROJECTS_DIRECTORY);
-		Document[] docs = new Document[files.length];
-		for (int i = 0; i < files.length; i++) {
-			docs[i] = readDocument(files[i]);
-		}
-		return docs;
+	public ToDoTask readToDo(String title) {
+		return todoParser.createToDo(readDocument(
+				dataFolder.getFile(DataFolder.TODO_DIRECTORY, title)));
 	}
 
-	/**
-	 * Provides the functionality for writing a Document object
-	 * representing a project into a textFile of the given name.
-	 * The file will be stored in the projects folder.
-	 * @param doc
-	 * @param fileName
-	 */
-	public void writeProject(Document doc, String fileName) {
-		File file = new File(DataFolder.PROJECTS_DIRECTORY, fileName + DataFolder.EXTENSION);
-		setTransformerSchema(DataFolder.PROJECT_DTD);
-		writeDocument(doc, file);
+	public void writeToDo(ToDoTask toDoTask, String title) {
+		setTransformerSchema(DataFolder.TODO_DTD);
+		writeDocument(todoParser.createDocument(toDoTask),
+				dataFolder.getFile(DataFolder.TODO_DIRECTORY, title));
 	}
 
-	/**
-	 * Checks whether or not the data file exists in the folder
-	 * or not.
-	 * @param fileName
-	 * @return
-	 */
-	public boolean projectFileExists(String fileName) {
-		return dataFolder.hasFile(DataFolder.PROJECTS_DIRECTORY, fileName);
+	public boolean toDoExists(String title) {
+		return dataFolder.hasFile(DataFolder.TODO_DIRECTORY, title);
 	}
 
+	public int toDoSaveCount() {
+		return dataFolder.getFileCount(DataFolder.TODO_DIRECTORY);
+	}
+
+	/*
+	* Internal methods for performing basic, nonspecific versions
+	* of the public methods
+	*/
 	/**
 	 * Provides the functionality for reading any xml file into
 	 * the format of a DOM object regardless of what that xml file
@@ -161,13 +145,15 @@ public class Dao {
 	}
 
 	/**
-	 * Shorthand method for  telling the transformer which dtd file
+	 * Shorthand method for telling the transformer which dtd file
 	 * to used when validating the document.
 	 * @param file
 	 */
 	private void setTransformerSchema(File file) {
-		Path relative = DataFolder.PROJECTS_DIRECTORY.toPath().relativize(file.toPath());
-		transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, relative.toString());
+		Path relative = DataFolder.TODO_DIRECTORY.toPath()
+				.relativize(file.toPath());
+		transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM,
+				relative.toString());
 	}
 
 	/**
@@ -193,4 +179,5 @@ public class Dao {
 			exception.printStackTrace();
 		}
 	}
+
 }

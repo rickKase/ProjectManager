@@ -4,20 +4,25 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Meant to represent the in program data folder in order to
- * allow easy access and manipulation of its contents.
- * Created by Rick on 6/13/2017.
+ * Represents the file system of this project and provides simple
+ * functionality for manipulating it.
+ * TODO provide more functionality by handling all File instances internally
+ * Created by Rick on 7/3/2017.
  */
 public class DataFolder {
 
 	/* internal Constants for all important folders in program */
 	private static final File BASE_DIRECTORY = new File(".");
-	private static final File DATA_DIRECTORY = new File(BASE_DIRECTORY, File.separator + "data");
-	private static final File SCHEMA_DIRECTORY = new File(DATA_DIRECTORY, "schema");
+	private static final File DATA_DIRECTORY = new File(BASE_DIRECTORY,
+			File.separator + "data");
+	private static final File SCHEMA_DIRECTORY = new File(DATA_DIRECTORY,
+			"schema");
 
 	/* Reference to Folder and schema for all data types in program */
-	public static final File PROJECT_DTD = new File(SCHEMA_DIRECTORY, "project.dtd");
-	public static final File PROJECTS_DIRECTORY = new File(DATA_DIRECTORY, "projects");
+	public static final File TODO_DTD = new File(SCHEMA_DIRECTORY,
+			"todo.dtd");
+	public static final File TODO_DIRECTORY = new File(DATA_DIRECTORY,
+			"todo");
 
 	/* file extension used for stored data */
 	public static final String EXTENSION = ".xml";
@@ -31,32 +36,33 @@ public class DataFolder {
 		return instance;
 	}
 
+	public File getFile(File folder, String name) {
+		return new File(folder, name + EXTENSION);
+	}
 
 	/**
-	 * Creates a file of the given name within the respective folder.
-	 * Extension is added onto the filename within this method so
-	 * file names passed to it should not include the extension.
-	 * @param folder
-	 * @param fileName
+	 * Creates the file provided as an argument if it does not
+	 * already exist, otherwise does nothing.
+	 * @param file
 	 */
-	public void createFile(File folder, String fileName) {
+	public void createFile(File file) {
+		if (file.exists())
+			return;
 		try {
-			new File(folder, fileName + EXTENSION).createNewFile();
+			file.createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * Deletes a file of the given name within the respective folder.
-	 * Extension is added onto the filename within this method so
-	 * file names passed to it should not include the extension.
-	 * @param folder
-	 * @param fileName
+	 * Deletes the file provided as an argument and returns
+	 * a boolean describing if the action was successful.
+	 * @param file
 	 * @return boolean whether or not the file was deleted
 	 */
-	public boolean deleteFile(File folder, String fileName) {
-		return new File(folder, fileName + EXTENSION).delete();
+	public boolean deleteFile(File file) {
+		return file.delete();
 	}
 
 	/**
