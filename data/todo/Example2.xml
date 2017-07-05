@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE todo SYSTEM "..\schema\todo.dtd">
+<todo>
+	<title>Example2</title>
+	<status>INCOMPLETE</status>
+	<todo>
+		<title>item 1</title>
+		<status>INCOMPLETE</status>
+		<todo>
+			<title>item 1.1</title>
+			<status>COMPLETE</status>
+		</todo>
+		<todo>
+			<title>item 1.2</title>
+			<status>INCOMPLETE</status>
+
+		</todo>
+		<todo>
+			<title>item 1.3</title>
+			<status>INCOMPLETE</status>
+		</todo>
+		<todo>
+			<title>item 1.4</title>
+			<status>COMPLETE</status>
+		</todo>
+	</todo>
+	<todo>
+		<title>item 2</title>
+		<status>INCOMPLETE</status>
+		<todo>
+			<title>item 2.1</title>
+			<status>COMPLETE</status>
+		</todo>
+		<todo>
+			<title>item 2.2</title>
+			<status>INCOMPLETE</status>
+		</todo>
+	</todo>
+	<todo>
+		<title>item 3</title>
+		<status>INCOMPLETE</status>
+	</todo>
+	<todo>
+		<title>item 4</title>
+		<status>INCOMPLETE</status>
+	</todo>
+	<todo>
+		<title>item 5</title>
+		<status>INCOMPLETE</status>
+		<todo>
+			<title>item 5.1</title>
+			<status>INCOMPLETE</status>
+		</todo>
+		<todo>
+			<title>item 5.2</title>
+			<status>INCOMPLETE</status>
+		</todo>
+		<todo>
+			<title>item 5.3</title>
+			<status>INCOMPLETE</status>
+		</todo>
+	</todo>
+</todo>

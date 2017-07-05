@@ -1,4 +1,4 @@
-package com.kaselabs.projman.Model.entities;
+package com.kaselabs.projman.model.entities;
 
 import java.util.ArrayList;
 import java.util.List;

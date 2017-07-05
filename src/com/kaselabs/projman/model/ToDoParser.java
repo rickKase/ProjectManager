@@ -1,6 +1,6 @@
-package com.kaselabs.projman.Model;
+package com.kaselabs.projman.model;
 
-import com.kaselabs.projman.Model.entities.ToDoTask;
+import com.kaselabs.projman.model.entities.ToDoTask;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;

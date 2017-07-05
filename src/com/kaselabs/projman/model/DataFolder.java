@@ -1,4 +1,4 @@
-package com.kaselabs.projman.Model;
+package com.kaselabs.projman.model;
 
 import java.io.File;
 import java.io.IOException;

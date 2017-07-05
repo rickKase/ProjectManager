@@ -8,18 +8,18 @@
 
 <?import javafx.scene.text.Font?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-			fx:controller="com.kaselabs.projman.View.Controller" >
+			fx:controller="com.kaselabs.projman.controller.Controller" >
 	<left>
 		<VBox>
-			<ListView fx:id="toDoView" VBox.vgrow="ALWAYS" prefHeight="0" minHeight="0"
-					onMouseReleased="#chooseToDo">
+			<ListView fx:id="listView" VBox.vgrow="ALWAYS" prefHeight="0" minHeight="0"
+					  onMouseReleased="#chooseToDo">
 
 			</ListView>
 			<HBox>
 				<TextField fx:id="projectNameField" HBox.hgrow="ALWAYS" />
 				<Button onAction="#deleteToDo" text="delete" />
-				<Button fx:id="addProjectButton" onAction="#createToDo"
-						text="New" />
+				<Button onAction="#createToDo" text="New" />
+				<Button onAction="#printModel" text="print"/>
 			</HBox>
 		</VBox>
 	</left>

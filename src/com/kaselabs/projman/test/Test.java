@@ -1,7 +1,7 @@
 package com.kaselabs.projman.test;
 
-import com.kaselabs.projman.Model.Dao;
-import com.kaselabs.projman.Model.entities.ToDoTask;
+import com.kaselabs.projman.model.Dao;
+import com.kaselabs.projman.model.entities.ToDoTask;
 
 
 /**

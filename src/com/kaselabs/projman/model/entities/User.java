@@ -1,6 +1,6 @@
-package com.kaselabs.projman.Model.entities;
+package com.kaselabs.projman.model.entities;
 
-import com.kaselabs.projman.Model.Dao;
+import com.kaselabs.projman.model.Dao;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.kaselabs.projman.View;
+package com.kaselabs.projman.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
-		primaryStage.setTitle("ProjectManager");
+		primaryStage.setTitle("ToDoLists");
 		primaryStage.setScene(new Scene(root, 1080, 560));
 		primaryStage.show();
 	}
