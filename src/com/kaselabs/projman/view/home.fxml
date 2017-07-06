@@ -12,9 +12,7 @@
 	<left>
 		<VBox>
 			<ListView fx:id="listView" VBox.vgrow="ALWAYS" prefHeight="0" minHeight="0"
-					  onMouseReleased="#chooseToDo">
-
-			</ListView>
+					  onMouseReleased="#chooseToDo" />
 			<HBox>
 				<TextField fx:id="projectNameField" HBox.hgrow="ALWAYS" />
 				<Button onAction="#deleteToDo" text="delete" />
