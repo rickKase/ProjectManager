@@ -77,7 +77,6 @@ public class ToDoTask {
 	 * based on the status of all of its children.
 	 */
 	private void evaluateStatus() {
-		System.out.println("evaluateStatus() called in " + title);
 		if (getItemWithStatusCount(Status.COMPLETE) == children.size())
 			status =  Status.COMPLETE;
 		else
