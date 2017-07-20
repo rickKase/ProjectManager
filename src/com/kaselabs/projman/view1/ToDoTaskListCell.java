@@ -1,8 +1,6 @@
-package com.kaselabs.projman.view;
+package com.kaselabs.projman.view1;
 
 import com.kaselabs.projman.model.entities.ToDoTask;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.scene.control.ListCell;
 
 /**

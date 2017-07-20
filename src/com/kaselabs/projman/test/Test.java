@@ -1,6 +1,7 @@
 package com.kaselabs.projman.test;
 
 import com.kaselabs.projman.model.Dao;
+import com.kaselabs.projman.model.entities.Status;
 import com.kaselabs.projman.model.entities.ToDoTask;
 
 
@@ -24,7 +25,7 @@ public class Test {
 		toDoTask.printFullToDo();
 
 		System.out.println();
-		toDoTask.getItem(0).getItem(1).getItem(2).setStatus(ToDoTask.Status.COMPLETE);
+		toDoTask.getItem(0).getItem(1).getItem(2).setStatus(Status.COMPLETE);
 		System.out.println();
 
 		toDoTask.printFullToDo();

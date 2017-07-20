@@ -1,5 +1,6 @@
-package com.kaselabs.projman.view;
+package com.kaselabs.projman.view1;
 
+import com.kaselabs.projman.model.entities.Status;
 import com.kaselabs.projman.model.entities.ToDoTask;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTreeCell;
@@ -69,7 +70,7 @@ public class ToDoTaskTreeCell extends CheckBoxTreeCell<ToDoTask> {
 	}
 
 	private boolean getItemStatus() {
-		if (getItem().getStatus() == ToDoTask.Status.COMPLETE)
+		if (getItem().getStatus() == Status.COMPLETE)
 			return true;
 		else
 			return false;
@@ -77,9 +78,9 @@ public class ToDoTaskTreeCell extends CheckBoxTreeCell<ToDoTask> {
 
 	private void setItemStatus(boolean status) {
 		if (status)
-			getItem().setStatus(ToDoTask.Status.COMPLETE);
+			getItem().setStatus(Status.COMPLETE);
 		else
-			getItem().setStatus(ToDoTask.Status.INCOMPLETE);
+			getItem().setStatus(Status.INCOMPLETE);
 	}
 
 	public void addChild() {

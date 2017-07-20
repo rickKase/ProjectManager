@@ -1,10 +1,7 @@
-package com.kaselabs.projman.view;
+package com.kaselabs.projman.view1;
 
 import com.kaselabs.projman.model.entities.ToDoTask;
-import javafx.event.Event;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.CheckBoxTreeItem;
-import javafx.scene.control.TreeItem;
 
 /**
  * Created by Rick on 7/5/2017.

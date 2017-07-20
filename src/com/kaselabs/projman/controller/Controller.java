@@ -2,9 +2,9 @@ package com.kaselabs.projman.controller;
 
 import com.kaselabs.projman.model.entities.ToDoTask;
 import com.kaselabs.projman.model.entities.User;
-import com.kaselabs.projman.view.ToDoTaskListCell;
-import com.kaselabs.projman.view.ToDoTaskTreeCell;
-import com.kaselabs.projman.view.ToDoTaskTreeItem;
+import com.kaselabs.projman.view1.ToDoTaskListCell;
+import com.kaselabs.projman.view1.ToDoTaskTreeCell;
+import com.kaselabs.projman.view1.ToDoTaskTreeItem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

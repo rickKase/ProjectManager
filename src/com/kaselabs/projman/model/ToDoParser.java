@@ -1,5 +1,6 @@
 package com.kaselabs.projman.model;
 
+import com.kaselabs.projman.model.entities.Status;
 import com.kaselabs.projman.model.entities.ToDoTask;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -77,7 +78,7 @@ public class ToDoParser {
 	 * @param status to be represented as a Node
 	 * @return Node that represents the status
 	 */
-	private Node createCompletedNode(Document doc, ToDoTask.Status status) {
+	private Node createCompletedNode(Document doc, Status status) {
 		Node statusNode = doc.createElement(STATUS_NODE_NAME);
 		statusNode.appendChild(doc.createTextNode(status.toString()));
 		return statusNode;
@@ -103,7 +104,7 @@ public class ToDoParser {
 		NodeList nodes = todoNode.getChildNodes();
 		ToDoTask todo = new ToDoTask();
 		todo.setTitle(nodes.item(0).getTextContent());
-		todo.setStatus(ToDoTask.Status.valueOf(nodes.item(1).getTextContent()));
+		todo.setStatus(Status.valueOf(nodes.item(1).getTextContent()));
 		for (int i = 2; i < nodes.getLength(); i++)
 			todo.add(parseToDoFromNode(nodes.item(i)));
 		return todo;

@@ -231,11 +231,4 @@ public class ToDoTask {
 		return --indent;
 	}
 
-
-	/**
-	 * Defines the status of a ToDoObject
-	 */
-	public enum Status {
-		COMPLETE, INCOMPLETE, FAILED
-	}
 }

@@ -1,4 +1,4 @@
-package com.kaselabs.projman.view;
+package com.kaselabs.projman.view1;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
